@@ -15,7 +15,7 @@ import java.util.List;
 public class MessageConfig extends Config {
 
     @ConfigEntry(key = "message.prefix", transformers = {ChatColorTransformer.class})
-    public String prefix = "&5&lN&d&lBR &8\u25CF &7";
+    public String prefix = "&5&lN&d&lBR &8● &7";
 
     @ConfigEntry(key = "message.please-wait", transformers = {ChatColorTransformer.class, VariableTransformer.class})
     public String messagePleaseWait = "{PREFIX}&7&oPlease wait...";

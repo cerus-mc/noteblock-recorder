@@ -3,7 +3,6 @@ package de.cerus.noteblockrecorder.inventory;
 import de.cerus.noteblockrecorder.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -86,19 +85,7 @@ public class PaginatedInventory implements Listener {
             }
 
             int page = inventoryHolder.getPage() - 1;
-            for (int i = page * (3 * 9); i < (page * (3 * 9)) + (3 * 9); i++) {
-                if (inventoryItems.size() <= i) {
-                    break;
-                }
-
-                inventory.setItem(i - (page * (3 * 9)), inventoryItems.get(i).getItemStack());
-            }
-
-            inventoryHolder.setPage(page);
-
-            inventory.setItem(31, new ItemBuilder(Material.PAPER)
-                    .withName("§ePage " + (page + 1))
-                    .build());
+            changePage(inventory, inventoryHolder, page);
             return;
         } else if (event.getSlot() == 35) {
             int maxPage = (inventoryItems.size() / (3 * 9)) + ((inventoryItems.size() % (3 * 9)) == 0 ? 0 : 1);
@@ -111,19 +98,7 @@ public class PaginatedInventory implements Listener {
             }
 
             int page = inventoryHolder.getPage() + 1;
-            for (int i = page * (3 * 9); i < (page * (3 * 9)) + (3 * 9); i++) {
-                if (inventoryItems.size() <= i) {
-                    break;
-                }
-
-                inventory.setItem(i - (page * (3 * 9)), inventoryItems.get(i).getItemStack());
-            }
-
-            inventoryHolder.setPage(page);
-
-            inventory.setItem(31, new ItemBuilder(Material.PAPER)
-                    .withName("§ePage " + (page + 1))
-                    .build());
+            changePage(inventory, inventoryHolder, page);
             return;
         }
 
@@ -138,6 +113,22 @@ public class PaginatedInventory implements Listener {
         int index = ((3 * 9) * inventoryHolder.getPage()) + event.getSlot();
         InventoryItem inventoryItem = inventoryItems.get(index);
         inventoryItem.getActionListener().accept(event);
+    }
+
+    private void changePage(Inventory inventory, PaginatedInventoryHolder inventoryHolder, int page) {
+        for (int i = page * (3 * 9); i < (page * (3 * 9)) + (3 * 9); i++) {
+            if (inventoryItems.size() <= i) {
+                break;
+            }
+
+            inventory.setItem(i - (page * (3 * 9)), inventoryItems.get(i).getItemStack());
+        }
+
+        inventoryHolder.setPage(page);
+
+        inventory.setItem(31, new ItemBuilder(Material.PAPER)
+                .withName("§ePage " + (page + 1))
+                .build());
     }
 
     @EventHandler
