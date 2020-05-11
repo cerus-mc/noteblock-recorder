@@ -1,0 +1,5 @@
+name: NoteblockRecorder
+author: Cerus
+main: de.cerus.noteblockrecorder.NoteblockRecorder
+version: ${project.version}
+api-version: 1.15
