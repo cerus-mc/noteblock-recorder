@@ -21,25 +21,6 @@ public class ChatColorTransformer implements Transformer {
         if (value instanceof List<?>) {
             return Arrays.asList((String[]) transform(key, ((List<?>) value).toArray(new String[0])));
         }
-        if (value instanceof Iterable<?>) {
-            Iterable<?> iterable = (Iterable<?>) value;
-            int len = 0;
-            while (iterable.iterator().hasNext()) {
-                len++;
-            }
-
-            String[] arr = new String[len];
-
-            int i = 0;
-            for (Object o : iterable) {
-                if (!(o instanceof String)) {
-                    return value;
-                }
-                arr[i++] = (String) o;
-            }
-
-            return (Iterable<String>) Arrays.asList((String[]) transform(key, arr));
-        }
         return value;
     }
 
@@ -58,25 +39,6 @@ public class ChatColorTransformer implements Transformer {
         }
         if (value instanceof List<?>) {
             return Arrays.asList((String[]) reverseTransform(key, ((List<?>) value).toArray(new String[0])));
-        }
-        if (value instanceof Iterable<?>) {
-            Iterable<?> iterable = (Iterable<?>) value;
-            int len = 0;
-            while (iterable.iterator().hasNext()) {
-                len++;
-            }
-
-            String[] arr = new String[len];
-
-            int i = 0;
-            for (Object o : iterable) {
-                if (!(o instanceof String)) {
-                    return value;
-                }
-                arr[i++] = (String) o;
-            }
-
-            return (Iterable<String>) Arrays.asList((String[]) reverseTransform(key, arr));
         }
         return value;
     }
