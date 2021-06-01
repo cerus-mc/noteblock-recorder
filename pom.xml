@@ -72,6 +72,7 @@
                             <artifact>de.cerus.noteblockrecorder:noteblock-recorder</artifact>
                             <excludes>
                                 <exclude>de/cerus/noteblockrecorder/converter/**</exclude>
+                                <exclude>de/cerus/noteblockrecorder/example/**</exclude>
                             </excludes>
                         </filter>
                     </filters>
@@ -88,14 +89,14 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>de.cerus</groupId>
-                <artifactId>compiledat-maven-plugin</artifactId>
-                <version>1.0.6</version>
+                <groupId>de.cerus.linecount</groupId>
+                <artifactId>line-count-maven-plugin</artifactId>
+                <version>1.0.1</version>
                 <executions>
                     <execution>
                         <phase>initialize</phase>
                         <goals>
-                            <goal>compilecheck</goal>
+                            <goal>linecount</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -105,7 +106,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <excludePackageNames>de.cerus.noteblockrecorder:de.cerus.noteblockrecorder.command:de.cerus.noteblockrecorder.command.*:de.cerus.noteblockrecorder.config:de.cerus.noteblockrecorder.config.*:de.cerus.noteblockrecorder.converter:de.cerus.noteblockrecorder.converter.*:de.cerus.noteblockrecorder.fileformat:de.cerus.noteblockrecorder.fileformat.*:de.cerus.noteblockrecorder.inventory:de.cerus.noteblockrecorder.inventory.*:de.cerus.noteblockrecorder.listener:de.cerus.noteblockrecorder.listener.*:de.cerus.noteblockrecorder.util:de.cerus.noteblockrecorder.util.*</excludePackageNames>
+                    <excludePackageNames>de.cerus.noteblockrecorder:de.cerus.noteblockrecorder.integrations:de.cerus.noteblockrecorder.integrations.*:de.cerus.noteblockrecorder.example:de.cerus.noteblockrecorder.example.*:de.cerus.noteblockrecorder.command:de.cerus.noteblockrecorder.command.*:de.cerus.noteblockrecorder.config:de.cerus.noteblockrecorder.config.*:de.cerus.noteblockrecorder.converter:de.cerus.noteblockrecorder.converter.*:de.cerus.noteblockrecorder.fileformat:de.cerus.noteblockrecorder.fileformat.*:de.cerus.noteblockrecorder.inventory:de.cerus.noteblockrecorder.inventory.*:de.cerus.noteblockrecorder.listener:de.cerus.noteblockrecorder.listener.*:de.cerus.noteblockrecorder.util:de.cerus.noteblockrecorder.util.*</excludePackageNames>
                     <additionalDependencies>
                         <additionalDependency>
                             <groupId>org.spigotmc</groupId>

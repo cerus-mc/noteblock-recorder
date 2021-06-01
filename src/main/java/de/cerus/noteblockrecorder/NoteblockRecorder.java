@@ -9,6 +9,7 @@ import de.cerus.noteblockrecorder.config.impl.PluginConfig;
 import de.cerus.noteblockrecorder.listener.InventoryClickListener;
 import de.cerus.noteblockrecorder.listener.NotePlayListener;
 import de.cerus.noteblockrecorder.listener.PlayerInteractListener;
+import de.cerus.noteblockrecorder.listener.PlayerQuitListener;
 import de.cerus.noteblockrecorder.song.RecorderController;
 import de.cerus.noteblockrecorder.song.SongController;
 import de.cerus.noteblockrecorder.song.SongIndexes;
@@ -109,6 +110,7 @@ public class NoteblockRecorder extends JavaPlugin {
         pluginManager.registerEvents(new PlayerInteractListener(recorderController), this);
         pluginManager.registerEvents(new NotePlayListener(recorderController), this);
         pluginManager.registerEvents(new InventoryClickListener(songController, pluginConfig, messageConfig), this);
+        pluginManager.registerEvents(new PlayerQuitListener(recorderController), this);
 
         initializeApi(songController, songsFolder);
     }

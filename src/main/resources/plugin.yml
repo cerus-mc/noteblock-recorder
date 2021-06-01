@@ -2,4 +2,5 @@ name: NoteblockRecorder
 author: Cerus
 main: de.cerus.noteblockrecorder.NoteblockRecorder
 version: ${project.version}
+softdepend: [WorldGuard, GriefPrevention]
 api-version: 1.15
